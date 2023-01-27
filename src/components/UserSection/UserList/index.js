@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import UserCard from "../UserCard";
 
 class UserList extends Component {
-  mapUsers = (user) => <UserCard key={user.id} user={user} userSelect={this.props.userSelect} />;
+  userSelect = (id) => {
+    const { users, setUserSelected } = this.props;
+    const newUsers = users.map((user) => ({
+      ...user,
+      isSelected: user.id === id ? !user.isSelected : user.isSelected,
+    }));
+    setUserSelected(newUsers);
+  };
+  mapUsers = (user) => <UserCard key={user.id} user={user} userSelect={this.userSelect} />;
 
   render() {
     const { users } = this.props;

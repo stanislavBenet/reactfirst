@@ -37,21 +37,16 @@ class UserSection extends Component {
       users: dbUsers.map((user) => ({ ...user, isSelected: false })),
     };
   }
-  userSelect = (id) => {
-    const { users } = this.state;
-    this.setState({
-      users: users.map((user) => ({
-        ...user,
-        isSelected: user.id === id ? !user.isSelected : user.isSelected,
-      })),
-    });
-  };
+
+
+  setUserSelected = (newUsers) => this.setState({ users: newUsers });
+
   render() {
     const { users } = this.state;
     return (
       <>
         <SelectedUserList users={users} />
-        <UserList users={users} userSelect={this.userSelect} />
+        <UserList users={users} setUserSelected={this.setUserSelected} />
       </>
     );
   }

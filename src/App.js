@@ -1,7 +1,7 @@
 import { Component } from "react";
 import "./App.css";
-// import CiaoSection from "./components/СiaoSection";
-import UserSection from './components/UserSection/index';
+import CiaoSection from "./components/СiaoSection";
+//  import UserSection from './components/UserSection/index';
 
 
 
@@ -13,7 +13,10 @@ class App extends Component {
   // }
 
   render() {
-    return <UserSection />;
+    return (
+      // <UserSection/>
+      < CiaoSection />
+    )
   }
 }
 
