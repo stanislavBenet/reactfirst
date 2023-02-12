@@ -1,4 +1,5 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 //import './style.css'
 import styles from "./Ciao.module.css";
 class Ciao extends Component {
@@ -21,5 +22,9 @@ class Ciao extends Component {
     );
   }
 }
+
+Ciao.propTypes = {
+  username: PropTypes.string,
+};
 
 export default Ciao;

@@ -1,0 +1,21 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 300px;
+  margin: auto;
+}
+
+.input {
+  margin: 5px 0;
+  background-color: pink;
+}
+
+.valid {
+  background-color: lightgreen;
+}
+
+.invalid {
+  background-color: red;
+}

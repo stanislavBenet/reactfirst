@@ -1,26 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
+import { PropTypes } from "prop-types";
 import UserCard from "../UserCard";
 
-class UserList extends Component {
-  userSelect = (id) => {
-    const { users, setUserSelected } = this.props;
+function UserList(props) {
+  const userSelect = (id) => {
+    const { users, setUserSelected } = props;
     const newUsers = users.map((user) => ({
       ...user,
       isSelected: user.id === id ? !user.isSelected : user.isSelected,
     }));
     setUserSelected(newUsers);
   };
-  mapUsers = (user) => <UserCard key={user.id} user={user} userSelect={this.userSelect} />;
+  const mapUsers = (user) => <UserCard key={user.id} user={user} userSelect={userSelect} />;
 
-  render() {
-    const { users } = this.props;
-    return (
-      <section>
-        <h2>Users list</h2>
-        {users.map(this.mapUsers)}
-      </section>
-    );
-  }
+  const { users } = props;
+  return (
+    <section>
+      <h2>Users list</h2>
+      {users.map(mapUsers)}
+    </section>
+  );
 }
+UserList.defaultProps = {
+  users: [],
+  setUserSelected: () => {},
+};
 
+UserList.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      firstName: PropTypes.string.isRequired,
+      isSelected: PropTypes.bool,
+    })
+  ).isRequired,
+  setUserSelected: PropTypes.func,
+};
 export default UserList;
